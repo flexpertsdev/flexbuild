@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary - Blue for main actions and visual builder */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+
+  /* Secondary - Purple for AI features */
+  --color-secondary-500: #8b5cf6;
+  --color-secondary-600: #7c3aed;
+  
+  /* Success, Warning, Error */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  
+  /* Neutral Scale */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #111827;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-900);
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-500);
+}
+
+/* Component layer styles */
+@layer components {
+  .canvas-container {
+    @apply bg-neutral-50 rounded-lg shadow-inner;
+  }
+
+  .component-selected {
+    @apply border-2 border-primary-500 shadow-lg;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+
+  .drop-zone-active {
+    @apply border-2 border-dashed border-primary-300 bg-primary-50 bg-opacity-50;
+  }
+
+  .dragging {
+    @apply opacity-80 rotate-1 z-50;
+  }
+
+  .drag-preview {
+    @apply pointer-events-none opacity-90;
+  }
+
+  .ai-message {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    @apply text-white rounded-t-2xl rounded-bl-sm rounded-br-2xl;
+  }
+
+  .user-message {
+    @apply bg-neutral-100 text-neutral-900 rounded-t-2xl rounded-br-sm rounded-bl-2xl;
+  }
+
+  .component-item {
+    @apply bg-white border border-neutral-200 rounded-lg p-3 cursor-grab transition-all duration-200;
+  }
+
+  .component-item:hover {
+    @apply border-primary-500 bg-primary-50 -translate-y-px;
+  }
+}
+
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+}
+
+@layer components {
+  .component-container {
+    @apply transition-all duration-150;
+  }
+  
+  .component-button {
+    @apply transition-all duration-150;
+  }
+  
+  .component-input {
+    @apply transition-all duration-150;
+  }
+  
+  .component-select {
+    @apply transition-all duration-150;
+  }
+  
+  .component-wrapper {
+    @apply cursor-pointer;
+  }
+  
+  .component-wrapper:hover {
+    @apply outline outline-2 outline-offset-2 outline-primary-200;
+  }
+}
