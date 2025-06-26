@@ -20,10 +20,8 @@ export const useAuth = () => {
     clearError
   } = useAuthStore();
 
-  // Check auth status on mount
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
+  // Don't check auth here - it's handled in App.tsx
+  // This prevents double initialization
 
   // Enhanced sign in with navigation
   const handleSignIn = useCallback(async (

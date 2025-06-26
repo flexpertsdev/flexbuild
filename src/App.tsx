@@ -2,10 +2,12 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
 import { useEffect, useState } from 'react';
 import { authService } from './services/auth.service';
+import { useAuthStore } from './stores/authStore';
 
 function App() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [initError, setInitError] = useState<string | null>(null);
+  const checkAuth = useAuthStore((state) => state.checkAuth);
 
   useEffect(() => {
     const initializeApp = async () => {
@@ -22,6 +24,9 @@ function App() {
           throw new Error('IndexedDB not available');
         }
 
+        // Check existing auth state
+        await checkAuth();
+
         // Try to create demo users
         await authService.createDemoUsers();
         
@@ -36,7 +41,7 @@ function App() {
     };
 
     initializeApp();
-  }, []);
+  }, [checkAuth]);
 
   if (!isInitialized) {
     return (
