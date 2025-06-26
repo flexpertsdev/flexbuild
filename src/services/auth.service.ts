@@ -13,13 +13,16 @@ class AuthService {
 
   constructor() {
     // Load session from localStorage on init
+    console.log('AuthService: Initializing...');
     this.loadSession();
   }
 
   private loadSession(): void {
     try {
+      console.log('AuthService: Loading session from localStorage...');
       const savedSession = localStorage.getItem(this.SESSION_KEY);
       if (savedSession) {
+        console.log('AuthService: Found saved session');
         const session = JSON.parse(savedSession);
         // Check if session is still valid
         if (new Date(session.expiresAt) > new Date()) {

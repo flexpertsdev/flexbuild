@@ -146,5 +146,5 @@ export const useIsAuthenticated = () => useAuthStore((state) => state.isAuthenti
 export const useAuthLoading = () => useAuthStore((state) => state.isLoading);
 export const useAuthError = () => useAuthStore((state) => state.error);
 
-// Initialize auth check on store creation
-useAuthStore.getState().checkAuth();
+// Don't automatically check auth on store creation
+// Let the app components handle initialization
